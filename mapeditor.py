@@ -91,6 +91,8 @@ while running:
 
     # Отрисовка карты
     screen.fill((255, 255, 255))
+    print(map_height);
+    print(map_width);
     for y in range(map_height):
         for x in range(map_width):
             tile_type = tiles[y][x]

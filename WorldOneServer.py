@@ -1,6 +1,6 @@
 # server.py (FastAPI + WebSockets)
 
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse
 import random
 import json
@@ -18,14 +18,44 @@ game_map = {
     "tile_size": map_data["tile_size"],
     "tiles": map_data["tiles"],
     "houses": [],
+    "factories": [],
+    "stores": [],
+    "farms": [],
+    "mines": [],
+    "schools": [],
+    "hospitals": [],
+    "police_stations": [],
+    "parks": [],
+    "power_plants": [],
+    "water_pumps": [],
     "players": {}
 }
 
-# Locate houses on map
+# Locate objects on map
 for y, row in enumerate(game_map["tiles"]):
     for x, tile in enumerate(row):
         if tile == "house":
             game_map["houses"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"], "owner": None})
+        elif tile == "factory":
+            game_map["factories"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "store":
+            game_map["stores"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "farm":
+            game_map["farms"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "mine":
+            game_map["mines"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "school":
+            game_map["schools"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "hospital":
+            game_map["hospitals"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "police_station":
+            game_map["police_stations"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "park":
+            game_map["parks"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "power_plant":
+            game_map["power_plants"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
+        elif tile == "water_pump":
+            game_map["water_pumps"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
 
 app.websocket_connections = set() # Store all active websocket connection
 
