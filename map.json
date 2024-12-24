@@ -1,0 +1,16 @@
+{
+  "map_size": { "width": 10, "height": 10 },
+  "tile_size": 28,
+  "tiles": [
+    ["grass", "grass", "road", "grass", "house", "grass","grass", "road", "grass", "grass"],
+    ["grass", "grass", "road", "grass", "grass", "grass","grass", "road", "grass", "grass"],
+    ["road", "road", "road", "road", "road", "road", "road", "road", "road", "road"],
+        ["grass", "grass", "road", "grass", "grass", "grass","grass", "road", "grass", "grass"],
+    ["grass", "factory", "road", "store", "grass", "grass","grass", "road", "grass", "grass"],
+        ["grass", "grass", "road", "grass", "grass", "grass","grass", "road", "grass", "grass"],
+    ["road", "road", "road", "road", "road", "road", "road", "road", "road", "road"],
+        ["grass", "grass", "road", "grass", "grass", "grass","grass", "road", "grass", "grass"],
+    ["grass", "grass", "road", "grass", "house", "grass","grass", "road", "grass", "grass"],
+        ["grass", "grass", "road", "grass", "grass", "grass","grass", "road", "grass", "grass"]
+  ]
+}
