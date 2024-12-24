@@ -22,7 +22,6 @@ pygame.display.set_caption("Редактор карты")
 # Шрифты для эмодзи
 font = pygame.font.Font("NotoEmoji-VariableFont_wght.ttf", tile_size) # Linux/macOS
 
-
 # Цвета тайлов
 tile_colors = {
     "grass": (0, 150, 0),
@@ -61,6 +60,17 @@ current_tile_type = "grass" # Текущий выбранный тип тайл�
 # ... (создание окна - увеличена высота)
 screen_height = (map_height + 2) * tile_size
 screen = pygame.display.set_mode((screen_width, screen_height))
+
+def fill_map_with_grass(map_data):
+    width = map_data["map_size"]["width"]
+    height = map_data["map_size"]["height"]
+    for y in range(height):
+        if y >= len(map_data["tiles"]):
+            map_data["tiles"].append(["grass"] * width)
+        else:
+            for x in range(width):
+                if x >= len(map_data["tiles"][y]):
+                    map_data["tiles"][y].append("grass")
 
 # ... (основной цикл)
 running = True

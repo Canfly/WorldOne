@@ -1,10 +1,11 @@
 # client.py (Pygame)
 
 import pygame
-import websocket
 import json
 import threading
 import time
+from websocket._app import WebSocketApp
+
 
 # Initialize Pygame
 pygame.init()
@@ -37,12 +38,25 @@ def on_message(ws, msg):
             if player_id in game_map["players"]:
                del game_map["players"][player_id]
 
+def on_error(ws, error):
+    print(f"WebSocket error: {error}")
+
+def on_close(ws, close_status_code, close_msg):
+    print("WebSocket connection closed")
+
+def on_open(ws):
+    print("WebSocket connection opened")
+
 
 ws_app = None
 def websocket_thread(ws_url):
     global ws_app
-    ws_app = websocket.WebSocketApp(ws_url,
-                                  on_message=on_message)
+    ws_app = WebSocketApp(ws_url,
+                                      on_open=on_open,
+                                      on_message=on_message,
+                                      on_error=on_error,
+                                      on_close=on_close)
+
     ws_app.run_forever()
 
 
@@ -85,7 +99,10 @@ while running:
     if game_map and my_house:
         for house in game_map["houses"]:
             pygame.draw.rect(screen, (100, 100, 100), (house["x"], house["y"], 20, 20))
-
+        for factory in game_map.get("factories", []):
+            pygame.draw.rect(screen, (150, 150, 150), (factory["x"], factory["y"], 20, 20))
+        for store in game_map.get("stores", []):
+            pygame.draw.rect(screen, (200, 200, 200), (store["x"], store["y"], 20, 20))
 
         if "players" in game_map:
             for player_id, player_data in game_map["players"].items():

@@ -5,6 +5,7 @@ from fastapi.responses import HTMLResponse
 import random
 import json
 import uuid
+import uvicorn
 
 app = FastAPI()
 
@@ -91,3 +92,6 @@ async def broadcast(current_websocket: WebSocket, message: dict):
     """Broadcasts a message to all connected clients."""
     for ws in app.websocket_connections:
          await ws.send_text(json.dumps(message))
+
+if __name__ == "__main__":  # This block runs only when the script is executed directly
+    uvicorn.run(app, host="127.0.0.1", port=8000)  # Start the server
