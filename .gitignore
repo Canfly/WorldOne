@@ -28,3 +28,6 @@ env/
 # Local env files
 .env
 .env.*
+
+# Fonts
+NotoEmoji-VariableFont_wght.ttf
