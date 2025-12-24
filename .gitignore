@@ -1,0 +1,30 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+*.so
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDEs/editors
+.idea/
+.vscode/
+
+# Local env files
+.env
+.env.*

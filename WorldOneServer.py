@@ -48,7 +48,7 @@ for y, row in enumerate(game_map["tiles"]):
             game_map["schools"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
         elif tile == "hospital":
             game_map["hospitals"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
-        elif tile == "police_station":
+        elif tile == "police":
             game_map["police_stations"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})
         elif tile == "park":
             game_map["parks"].append({"x": x * game_map["tile_size"], "y": y * game_map["tile_size"]})

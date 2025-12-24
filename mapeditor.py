@@ -50,8 +50,8 @@ tile_emojis = {
     "mine": "⛏️",
     "school": "🚸",
     "hospital": "🏥",
-    "police": "🌳",
-    "park": "🚨",
+    "police": "🚨",
+    "park": "🌳",
     "power_plant": "⚡",
     "water_pump": "💧"
 }

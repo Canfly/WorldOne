@@ -44,8 +44,8 @@ tile_emojis = {
     "mine": "⛏️",
     "school": "🚸",
     "hospital": "🏥",
-    "police": "🌳",
-    "park": "🚨",
+    "police": "🚨",
+    "park": "🌳",
     "power_plant": "⚡",
     "water_pump": "💧"
 }
@@ -55,12 +55,14 @@ tile_size = 28
 font = pygame.font.Font("NotoEmoji-VariableFont_wght.ttf", tile_size) # Linux/macOS
 
 def on_message(ws, msg):
-    global game_map, my_house, my_player_id
+    global game_map, my_house, my_player_id, tile_size, font
     data = json.loads(msg)
     if "map" in data:
         game_map = data["map"]
         my_house = data["your_house"]
         my_player_id = data["your_id"]
+        tile_size = game_map["tile_size"]
+        font = pygame.font.Font("NotoEmoji-VariableFont_wght.ttf", tile_size)
 
     elif "message_type" in data: # Process server updates
         if data["message_type"] == "player_moved":
